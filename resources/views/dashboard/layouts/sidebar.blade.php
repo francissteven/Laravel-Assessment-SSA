@@ -3,11 +3,22 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 <div class="sb-sidenav-menu-heading">Menu</div>
-                <a class="nav-link {{ (Route::is('dashboard')) ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                @php
+                    $activeRoutes = [
+                        'dashboard', 
+                        'users.create', 
+                        'users.store',
+                        'users.view',
+                        'users.edit',
+                        'users.update',
+                        'users.destroy'
+                    ];
+                @endphp
+                <a class="nav-link {{ in_array(Route::currentRouteName(), $activeRoutes) ? 'active' : '' }}" href="{{ route('dashboard') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
-            </div>
+            </div>            
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>

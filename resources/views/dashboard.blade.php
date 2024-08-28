@@ -1,7 +1,5 @@
 @extends('layouts.master')
-
+@section('title', 'Dashboard')
 @section('content')
-<h1>
-    SAMPLE
-</h1>
+@include('dashboard.content')
 @endsection
