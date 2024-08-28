@@ -22,37 +22,10 @@
         <div id="layoutSidenav_content">
             <main>
                 @yield('content')
-                {{-- TOASTER --}}
-                <div aria-live="polite" aria-atomic="true" class="position-relative">
-                    <div class="toast-container p-3" id="toastPlacement" style="position: fixed; top: 0; right: 0; z-index: 1050;">
-                        @if(session('success'))
-                            <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
-                                <div class="toast-header">
-                                    <strong class="me-auto">Success</strong>
-                                    <small>Just now</small>
-                                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                                </div>
-                                <div class="toast-body">
-                                    {{ session('success') }}
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-                </div>
             </main>
             @include('dashboard.layouts.footer')
         </div>
-    </div>
-    {{-- TOASTER SCRIPT --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-            var toastList = toastElList.map(function (toastEl) {
-                return new bootstrap.Toast(toastEl, { delay: 5000 });
-            });
-            toastList.forEach(toast => toast.show());
-        });
-    </script>
+    </div>    
     <script src="{{ asset('js/scripts.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

@@ -70,16 +70,6 @@
                                         <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-8 mb-3 d-flex align-items-center">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="emailVerified" name="email_verified">
-                                            <label class="form-check-label" for="emailVerified">
-                                                Email Verified
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-secondary">Add User</button>
                                 </div>
