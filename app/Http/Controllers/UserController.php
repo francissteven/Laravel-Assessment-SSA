@@ -1,11 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Models\User;
-
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -30,8 +26,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         try {
-            // dd($request->all());
-
             $request->validate([
                 'prefixname' => ['nullable', 'string', 'max:255'],
                 'firstname' => ['required', 'string', 'max:255'],
@@ -69,9 +63,6 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         try {
-
-            // dd($request->all());
-
             $request->validate([
                 'prefixname' => ['nullable', 'string', 'max:255'],
                 'firstname' => ['required', 'string', 'max:255'],
@@ -123,10 +114,6 @@ class UserController extends Controller
         }
     }
 
-
-
-
-
     public function trashed()
     {
         $users = User::onlyTrashed()->get();
@@ -144,7 +131,6 @@ class UserController extends Controller
             return redirect()->back()->withErrors(['error' => 'Failed to restore user. Please try again.']);
         }
     }
-
 
     public function delete($id)
     {

@@ -10,20 +10,18 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * The path to the "home" route for your application.
-     *
-     * Typically, users are redirected here after authentication.
-     *
-     * @var string
-     */
-    public const HOME = '/home';
+    public const HOME = '/dashboard';
 
-    /**
-     * Define your route model bindings, pattern filters, and other route configuration.
-     */
     public function boot(): void
     {
+        parent::boot();
+
+        Route::macro('softDeletes', function ($prefix, $controller) {
+            Route::get("/trashed", [$controller, 'trashed'])->name("{$prefix}.trashed");
+            Route::patch("{$prefix}/{user}/restore", [$controller, 'restore'])->name("{$prefix}.restore");
+            Route::delete("{$prefix}/{user}/delete", [$controller, 'delete'])->name("{$prefix}.delete");
+        });
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
@@ -36,9 +34,6 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * Configure the rate limiters for the application.
-     */
     protected function configureRateLimiting(): void
     {
         RateLimiter::for('api', function (Request $request) {

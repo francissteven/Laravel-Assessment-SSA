@@ -20,13 +20,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/{user}', [UserController::class, 'view'])->name('users.view');
     Route::get('/dashboard/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
     Route::patch('/dashboard/edit/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/dashboard/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
-    Route::delete('/dashboard/{user}', [UserController::class, 'destroy'])->name('users.destroy'); //softdelete
+    // Route::get('/trashed', [UserController::class, 'trashed'])->name('users.trashed');
+    // Route::post('/trashed/restore/{id}', [UserController::class, 'restore'])->name('users.restore');
+    // Route::post('/trashed/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
 
-    Route::post('/dashboard/restore/{id}', [UserController::class, 'restore'])->name('users.restore'); //restore
-
-    Route::post('/dashboard/delete/{id}', [UserController::class, 'delete'])->name('users.delete'); //force delete
-
-    Route::get('/trashed', [UserController::class, 'trashed'])->name('users.trashed'); //trashed
+    Route::softDeletes('users', UserController::class);
 });
 

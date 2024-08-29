@@ -15,14 +15,19 @@
                         <div class="row mb-3">
                             <label for="prefixname" class="col-md-4 col-form-label text-md-end">{{ __('Prefix Name') }}</label>
                             <div class="col-md-6">
-                                <input id="prefixname" type="text" class="form-control @error('prefixname') is-invalid @enderror" name="prefixname" value="{{ old('prefixname') }}" autocomplete="prefixname">
+                                <select id="prefixname" class="form-control @error('prefixname') is-invalid @enderror" name="prefixname" autocomplete="prefixname">
+                                    <option value="" disabled selected>Select Prefix</option>
+                                    <option value="Mr">Mr</option>
+                                    <option value="Mrs">Mrs</option>
+                                    <option value="Ms">Ms</option>
+                                </select>
                                 @error('prefixname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div>                        
                     
                         <!-- First Name -->
                         <div class="row mb-3">

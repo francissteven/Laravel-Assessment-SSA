@@ -27,17 +27,13 @@
                             <td>{{ $index + 1 }}</td>
                             <td>
                                 @if($user->photo)
-                                    <img src="{{ asset('storage/' . $user->photo) }}" alt="Profile" width="30" height="30" class="rounded-circle">
+                                    <img src="{{ $user->avatar }}" alt="Profile" width="30" height="30" class="rounded-circle">
                                 @else
                                     <img src="{{ asset('def-profile.jpg') }}" alt="Profile" width="30" height="30" class="rounded-circle">
                                 @endif
                             </td>
                             <td>
-                                {{ $user->prefixname ? $user->prefixname . ' ' : '' }}
-                                {{ $user->firstname }} 
-                                {{ $user->middlename ? strtoupper(substr($user->middlename, 0, 1)) . '. ' : '' }}
-                                {{ $user->lastname }}
-                                {{ $user->suffixname ? ', ' . $user->suffixname : '' }}
+                                {{ $user->fullname }}
                             </td>
                             <td>{{ $user->username }}</td>
                             <td>{{ $user->email }}</td>
