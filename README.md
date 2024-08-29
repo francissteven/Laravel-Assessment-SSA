@@ -1,9 +1,4 @@
-Here's the revised README file without the routes, route macro, model accessor, and troubleshooting sections:
-
----
-
 # User Management System
-
 ## Overview
 
 This User Management System is built with Laravel, providing CRUD (Create, Read, Update, Delete) functionality along with soft delete features. The application allows for user management, including viewing, editing, and soft deleting users, as well as restoring and permanently deleting soft-deleted users.
