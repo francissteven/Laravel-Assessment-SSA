@@ -20,6 +20,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/{user}', [UserController::class, 'view'])->name('users.view');
     Route::get('/dashboard/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
     Route::patch('/dashboard/edit/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::delete('/dashboard/delete/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::delete('/dashboard/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/dashboard/trashed', [UserController::class, 'trashed'])->name('users.trashed');
+    Route::post('/dashboard/restore/{user}', [UserController::class, 'restore'])->name('users.restore');
+    Route::post('/dashboard/delete/{user}', [UserController::class, 'delete'])->name('users.delete');
 });
 

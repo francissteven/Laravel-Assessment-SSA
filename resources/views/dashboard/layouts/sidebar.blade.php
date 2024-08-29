@@ -18,6 +18,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
+                <a class="nav-link" href="#">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Soft Deleted
+                </a>
             </div>            
         </div>
         <div class="sb-sidenav-footer">

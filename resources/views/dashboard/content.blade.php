@@ -42,9 +42,13 @@
                             <td>{{ $user->username }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                                <a href="" class="btn btn-outline-success btn-sm">View</a>
-                                <a href="" class="btn btn-outline-primary btn-sm">Edit</a>
-                                <a href="" class="btn btn-outline-danger btn-sm">Delete</a>
+                                <a href="{{ route('users.view', $user->id) }}" class="btn btn-outline-success btn-sm">View</a>
+                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-primary btn-sm">Edit</a>
+                                <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
