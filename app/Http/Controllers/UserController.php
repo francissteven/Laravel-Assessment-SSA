@@ -123,10 +123,20 @@ class UserController extends Controller
         }
     }
 
-    public function restore(User $user)
+
+
+
+
+    public function trashed()
+    {
+        $users = User::onlyTrashed()->get();
+        return view('dashboard.softdelete', compact('users'));
+    }
+
+    public function restore($id)
     {
         try {
-            $user = User::withTrashed()->findOrFail($user);
+            $user = User::withTrashed()->findOrFail($id);
             $user->restore();
             return redirect()->route('users.trashed')->with('success', 'User Restored Successfully.');
         } catch (\Exception $e) {
@@ -135,21 +145,16 @@ class UserController extends Controller
         }
     }
 
-    public function delete(User $user)
+
+    public function delete($id)
     {
         try {
-            $user = User::withTrashed()->findOrFail($user);
+            $user = User::withTrashed()->findOrFail($id);
             $user->forceDelete();
             return redirect()->route('users.trashed')->with('success', 'User Permanently Deleted.');
         } catch (\Exception $e) {
             Log::error('User permanent delete failed: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Failed to permanently delete user. Please try again.']);
         }
-    }
-
-    public function trashed()
-    {
-        $users = User::onlyTrashed()->get();
-        return view('dashboard.trashed', compact('users'));
     }
 }
